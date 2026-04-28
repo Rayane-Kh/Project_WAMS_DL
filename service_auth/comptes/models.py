@@ -8,7 +8,7 @@ class Compte(AbstractUser):
         ('dermatologue', 'Dermatologue'),
         ('admin', 'Admin'),
     )
-
+    email = models.EmailField(unique=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
 
     def __str__(self):
