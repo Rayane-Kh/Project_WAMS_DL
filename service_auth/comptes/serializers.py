@@ -49,34 +49,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 # =========================
 
 
-'''
-class LoginSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    password = serializers.CharField()
-
-    def validate(self, data):
-        # 🔍 trouver user par email
-        try:
-            user = Compte.objects.get(email=data['email'])
-        except Compte.DoesNotExist:
-            raise serializers.ValidationError("Invalid credentials")
-
-        # 🔐 vérifier password
-        if not user.check_password(data['password']):
-            raise serializers.ValidationError("Invalid credentials")
-
-        # 🔑 générer JWT
-        refresh = RefreshToken.for_user(user)
-
-        return {
-            'user': user,
-            'access': str(refresh.access_token),
-            'refresh': str(refresh),
-            'role': user.role
-        }
-
-'''        
-
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField()
